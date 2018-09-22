@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import com.buzzup.authentication.exception.UserAlreadyExistsException;
 import com.buzzup.authentication.exception.UserNotFoundException;
@@ -28,10 +28,10 @@ public class UserAuthenticationServiceImplTest
 	    User user;
 
 	    @InjectMocks
-	    UserAuthenticationServiceImpl authenticateService;
+	    private UserAuthenticationServiceImpl authenticateService;
 
-	    List<User> userList = null;
-	    Optional<User> options;
+	    private List<User> userList = null;
+	    
 
 	    @Before
 	    public void setUp() {
@@ -44,7 +44,6 @@ public class UserAuthenticationServiceImplTest
 	        userList = new ArrayList<>();
 	        userList.add(user);
 
-	        options = Optional.of(user);
 
 	    }
 
