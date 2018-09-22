@@ -6,8 +6,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
-
-import com.buzzup.authentication.jwtFilter.JWTFilter;
+import com.buzzup.authentication.jwtfilter.JWTFilter;
 
 /*
  * The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration 

@@ -11,7 +11,7 @@ import org.junit.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,7 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 
 //import static org.mockito.ArgumentMatchers.eq;
 //import static org.mockito.Mockito.any;
@@ -29,7 +29,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.when;
@@ -46,10 +45,10 @@ public class UserAuthenticationControllerTest
 	    private User user;
 	    
 	    @MockBean
-	    UserAuthenticationService authenticateService;
+	    private UserAuthenticationService authenticateService;
 	    
 	    @InjectMocks
-	    UserAuthenticationController authenticateController;
+	    private UserAuthenticationController authenticateController;
 
 	    @Before
 	    public void setUp() {
@@ -86,10 +85,10 @@ public class UserAuthenticationControllerTest
 	    public void testLoginUser() throws Exception {
 	        String userId = "Johan@gmail.com";
 	        String password = "1234";
-	        Mockito.when(authenticateService.saveUser(user)).thenReturn(true);
-	        Mockito.when(authenticateService.findByEmailIdAndPassword(userId, password)).thenReturn(user);
-	        mockMvc.perform(MockMvcRequestBuilders.post("/api/login").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
-	                .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print());
+	        when(authenticateService.saveUser(user)).thenReturn(true);
+	        when(authenticateService.findByEmailIdAndPassword(userId, password)).thenReturn(user);
+	        mockMvc.perform(post("/api/login").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
+	                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
 	    }
 	    // Parsing String format data into JSON format
 	    private static String jsonToString(final Object obj) throws JsonProcessingException {

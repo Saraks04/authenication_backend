@@ -1,4 +1,4 @@
-package com.buzzup.authentication.jwtFilter;
+package com.buzzup.authentication.jwtfilter;
 
 import java.io.IOException;
 
